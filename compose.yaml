@@ -14,9 +14,11 @@ services:
       context: ./app
     links:
       - todo-database
-    #volumes: 
-    #  - ./app:/usr/src/app
-    #  - /usr/src/app/node_modules
+    volumes: 
+      # 将本地 app 目录挂载到容器的 /usr/src/app 目录
+      # 这样你对本地代码的修改会立即反映在容器中
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - 3001:3001
 
